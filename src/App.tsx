@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Webcam from 'react-webcam';
+import ReactScrollWheelHandler from 'react-scroll-wheel-handler';
+import front from './front_red.png';
 
 function App() {
+  const [top, setTop] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={front} className='front'></img>
+      {/* <ReactScrollWheelHandler
+        upHandler={(e) => {console.log(e.deltaY)}}
+        downHandler={(e) => {console.log(e.deltaY)}}
+      > */}
+        <div style={{
+          // clipPath: `inset(${top} 50% 50px 70px)`,
+          width: '100vw',
+          height: '100vh',
+        }}>
+          <Webcam 
+            mirrored={true}
+            className="webcam"
+            // style={`clip-path: ${clipPath}`}
+          />
+        </div>
+      {/* </ReactScrollWheelHandler> */}
     </div>
   );
 }
